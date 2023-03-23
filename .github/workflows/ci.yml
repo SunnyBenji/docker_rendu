@@ -1,20 +1,16 @@
 name: CI
-
 on:
   push:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repo
         uses: actions/checkout@v3
-
       - name: Composer audit
         run: composer audit
-
       - name: Login to github docker registry
         uses: docker/login-action@v2
         with:
@@ -26,4 +22,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.actor }}/docker_project:1.0.0
+          tags: ghcr.io/sunnybenji/docker_project:1.0.0
